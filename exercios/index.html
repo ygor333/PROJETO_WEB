@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YgorPW</title>
+<link rel="stylesheet" href="./yg.css">
+
+<script>
+
+function dobro(){
+
+let n1 = Number(document.getElementById("n1").value); // get = n1 vai receber um valor
+let resultado = n1 * 2; 
+
+document.getElementById("resultado").innerText = "Dobro: " + resultado;
+
+}
+
+function triplo(){
+
+let n1 = Number(document.getElementById("n1").value);
+let resultado = n1 * 3;
+
+document.getElementById("resultado").innerText = "Triplo: " + resultado;
+
+}
+
+function Quádruplo(){
+
+let n1 = Number(document.getElementById("n1").value);
+let resultado = n1 * 4;
+
+document.getElementById("resultado").innerText = "Quádruplo: " + resultado;
+}
+
+
+function Quíntuplo(){
+
+let n1 = Number(document.getElementById("n1").value);
+let resultado = n1 * 5;
+
+document.getElementById("resultado").innerText = "Quíntuplo: " + resultado;
+
+
+}
+
+function Sêxtuplo(){
+
+let n1 = Number(document.getElementById("n1").value);
+let resultado = n1 * 6;
+
+document.getElementById("resultado").innerText = "Sêxtuplo: " + resultado;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+    <nav class="nav-esq">
+        <h1><b>Ygor Santana</b></h1>
+    </nav>
+</header>
+
+<main align="center">
+
+    <h1>Calculadora</h1>
+
+    <div class="imagem"></div>
+
+        <h1>Dobro e Triplo</h1>
+
+        <input type="number" id="n1" placeholder="Digite um número">
+
+
+        <br>
+        <br>
+
+
+        <button class="botao1" onclick="dobro()">Dobro</button>
+        <button class="botao1" onclick="triplo()">Triplo</button>
+
+        <button class="botao1" onclick="Quádruplo()">Quádruplo</button>
+        <button class="botao1" onclick="Quíntuplo()">Quíntuplo</button>
+
+        <button class="botao1" onclick="Sêxtuplo()">Sêxtuplo</button>
+
+        <h1 id="resultado"></h1>
+
+</main>
+
+<footer>
+    <p>© 2026 por Ygor Santana. Criado para o trabalho de programação WEB</p>
+</footer>
+
+</body>
+</html>

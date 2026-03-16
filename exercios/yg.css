@@ -1,0 +1,148 @@
+/*
+#0B0B0D - black
+#262625 - cinza escuro
+#D9D9D9 - cinza claro
+#8C8C8C - cinza 
+#595959 - cinza um pouco escuro
+
+*/
+
+/* ============== INICIO =================== */
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+         background-color: #0B0B0D  ;
+    }
+
+    /* ============== MAIN =================== */
+    main{
+    margin: 150px;
+    position: relative;
+    }
+
+    .imagem{
+        
+    background:url(https://st2.depositphotos.com/1000423/5490/i/450/depositphotos_54906165-stock-photo-man-accountant.jpg);
+    max-width: 80%;
+    height: 70vh; /* redimensionamento da imagem no container */
+    background-repeat: no-repeat;
+    background-position: center center;  /* centralização da imagem no container */
+    background-size:contain;  /* tamanho da imagem no container (estilo cover) */
+    border-radius: 20px;
+    margin: 50px;
+    margin-left: 130px;    
+    }
+
+.botao1 {
+  --hover-shadows: 16px 16px 33px #121212, -16px -16px 33px #303030;
+  --accent: rgb(216, 203, 216);
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 1.1em;
+  background-color: #212121;
+  cursor: pointer;
+  color: white;
+  padding: 1em 2em;
+  margin: 10px;
+
+  transition: box-shadow ease-in-out 0.3s,
+  background-color ease-in-out 0.1s,
+  letter-spacing ease-in-out 0.1s,
+  transform ease-in-out 0.1s;
+
+  box-shadow: 13px 13px 10px #1c1c1c,
+  -13px -13px 10px #262626;
+}   
+
+.botao1:hover {
+  box-shadow: var(--hover-shadows);
+}
+
+.botao1:active {
+  box-shadow: var(--hover-shadows), var(--accent) 0px 0px 30px 5px;
+  background-color: var(--accent);
+  transform: scale(0.95);
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+font-size:18px;
+margin:10px;
+text-align:center;
+}
+
+
+/* ============== HEADER =================== */
+    .nav-esq{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+    }
+
+
+    header{
+        
+        top: 0;
+        width: 100%;
+        height: 100px;
+        background-color: #111547;
+          
+    }   
+    h1{
+        color: rgb(255, 255, 255);
+        margin: 40px;
+       padding: 0px 20px;
+       font-family: Arial, Helvetica, sans-serif;
+
+
+    }
+    li{
+        margin-left: 50px;
+        list-style: none;   
+    }
+
+    .Menu{
+        display: flex;
+       
+        margin: 20px;
+        
+    }
+
+    .Menu a{
+        text-decoration: none;   /* remove o sublinhado */
+        color: white; 
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .Menu a:hover{
+        color: rgb(43, 27, 27);   
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+/* ============== FOOTER =================== */      
+        
+    footer{
+        
+        text-align: center; 
+        padding: 30px 20px;
+        background-color: #111547;
+    }
+
+    p{
+        color: rgb(255, 255, 255);
+        margin: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    
+
+    
