@@ -59,15 +59,19 @@ function Bhaskara(){
 let a = Number(document.getElementById("a").value);
 let b = Number(document.getElementById("b").value);
 let c = Number(document.getElementById("c").value);
-let delta = Math.pow(b, 2) - (4 * a * c)
+
+let delta = Math.pow(b, 2) - (4 * a * c);
+
 if (a === 0 || delta < 0) 
-    {
-        return "Impossível calcular (a=0 ou delta negativo)";
-    }
+{
+    document.getElementById("bhaskara").innerText = "Impossível calcular (a=0 ou delta negativo)";
+    return;
+}
+
 let x1 = (-b + Math.sqrt(delta)) / (2 * a);
 let x2 = (-b - Math.sqrt(delta)) / (2 * a);
 
-document.getElementById("bhaskara").innerText = "Raiz 1 =  " + x1 + "Raiz 2 = " + x2;
+document.getElementById("bhaskara").innerText = "Raiz 1 = " + x1 + " | Raiz 2 = " + x2;
 
 }
 
