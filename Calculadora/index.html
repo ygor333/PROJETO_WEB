@@ -54,6 +54,61 @@ document.getElementById("resultado").innerText = "Sêxtuplo: " + resultado;
 
 }
 
+// Potenciação ==========================================================================
+
+
+function Quadrado(){
+
+let p = Number(document.getElementById("p").value);
+let resultado1 = Math.pow(p,2);
+
+document.getElementById("resultado1").innerText = "Quadrado: " + resultado1;
+
+}
+
+function Cubo(){
+
+let p = Number(document.getElementById("p").value);
+let resultado1 = Math.pow(p,3);
+
+document.getElementById("resultado1").innerText = "Cubo: " + resultado1;
+}
+
+
+function Quarta(){
+
+let p = Number(document.getElementById("p").value);
+let resultado1 = Math.pow(p,4);
+
+document.getElementById("resultado1").innerText = "Quarta Potência: " + resultado1;
+}
+
+function Quinta(){
+
+let p = Number(document.getElementById("p").value);
+let resultado1 = Math.pow(p,5);
+
+document.getElementById("resultado1").innerText = "Quinta Potência: " + resultado1;
+}
+
+function Sexta(){
+
+let p = Number(document.getElementById("p").value);
+let resultado1 = Math.pow(p,6);
+
+document.getElementById("resultado1").innerText = "Sexta Potência: " + resultado1;
+}
+
+
+
+
+
+// ==========================================================================================
+
+
+
+
+
 function Bhaskara(){
 
 let a = Number(document.getElementById("a").value);
@@ -69,11 +124,30 @@ if (a === 0 || delta < 0)
 }
 
 let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+let xx1 = x1.toFixed(2);
 let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+let xx2 = x1.toFixed(2);
 
-document.getElementById("bhaskara").innerText = "Raiz 1 = " + x1 + " | Raiz 2 = " + x2;
+document.getElementById("bhaskara").innerText = "Raiz 1 = " + xx1 + " | Raiz 2 = " + xx2;
+
 
 }
+
+
+function Media(){
+
+let m1 = Number(document.getElementById("m1").value);
+let m2 = Number(document.getElementById("m2").value);
+let m3 = Number(document.getElementById("m3").value);
+let m4 = Number(document.getElementById("m4").value);
+
+
+let Media = (m1+m2+m3+m4)/4;
+
+document.getElementById("media").innerText = "A media dos quatros valores é: " + Media;
+
+}
+
 
 </script>
 
@@ -93,7 +167,7 @@ document.getElementById("bhaskara").innerText = "Raiz 1 = " + x1 + " | Raiz 2 = 
 
     <div class="imagem"></div>
 
-        <h1>Dobro e Triplo</h1>
+        <h1>Multiplicação</h1>
 
         <input type="number" id="n1" placeholder="Digite um número">
 
@@ -120,6 +194,37 @@ document.getElementById("bhaskara").innerText = "Raiz 1 = " + x1 + " | Raiz 2 = 
         <br>
 
 
+<!-- ========================= POTENCIAÇÃO ====================================-->
+
+
+       <h1>Potenciação</h1>
+
+        <input type="number" id="p" placeholder="Digite um número">
+
+
+        <br>
+        <br>
+
+
+        <button class="botao1" onclick="Quadrado()">Quadrado</button>
+        <button class="botao1" onclick="Cubo()">Cubo</button>
+
+        <button class="botao1" onclick="Quarta()">Quarta Potência</button>
+        <button class="botao1" onclick="Quinta()">Quinta Potência</button>
+
+        <button class="botao1" onclick="Sexta()">Sexta Potência</button>
+
+        <h1 id="resultado1"></h1>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
 <!-- ========================= Bhaskara ====================================-->
 
 <h1>Bhaskara</h1>
@@ -137,6 +242,33 @@ document.getElementById("bhaskara").innerText = "Raiz 1 = " + x1 + " | Raiz 2 = 
 
 
 <h1 id="bhaskara"></h1>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+<!-- ========================= Bhaskara ====================================-->
+
+<h1>Media</h1>
+
+<input type="number" id="m1" placeholder="Digite o primeiro valor">
+<input type="number" id="m2" placeholder="Digite o segundo valor">
+<input type="number" id="m3" placeholder="Digite o terceiro valor">
+<input type="number" id="m4" placeholder="Digite o quarto valor">
+
+
+<br>
+<br>
+<br>
+
+        <button class="botao1" onclick="Media()">Bhaskara</button>
+
+
+<h1 id="media"></h1>
+
 
 
 </main>

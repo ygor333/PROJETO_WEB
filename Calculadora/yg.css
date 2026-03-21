@@ -33,11 +33,12 @@
     background-position: center center;  /* centralização da imagem no container */
     background-size:contain;  /* tamanho da imagem no container (estilo cover) */
     border-radius: 20px;
-    margin: 50px;
-    margin-left: 130px;    
+    margin: 40px;
+    margin-left: 105px;    
     }
 
-.botao1 {
+.botao1 
+{
   --hover-shadows: 16px 16px 33px #121212, -16px -16px 33px #303030;
   --accent: rgb(216, 203, 216);
   font-weight: bold;
@@ -59,17 +60,20 @@
   -13px -13px 10px #262626;
 }   
 
-.botao1:hover {
+.botao1:hover 
+{
   box-shadow: var(--hover-shadows);
 }
 
-.botao1:active {
+.botao1:active
+{
   box-shadow: var(--hover-shadows), var(--accent) 0px 0px 30px 5px;
   background-color: var(--accent);
   transform: scale(0.95);
 }
 
-input{
+input
+{
 padding:10px;
 border-radius:10px;
 border:none;
@@ -77,6 +81,15 @@ font-size:18px;
 margin:10px;
 text-align:center;
 }
+
+h1
+{
+        color: rgb(255, 255, 255);
+        margin: 40px;
+       padding: 0px 10px;
+       font-family: Arial, Helvetica, sans-serif;
+}
+
 
 
 /* ============== HEADER =================== */
@@ -96,11 +109,14 @@ text-align:center;
         background-color: #111547;
           
     }   
-    h1{
+    
+    header h1{
         color: rgb(255, 255, 255);
-        margin: 40px;
-       padding: 0px 20px;
+        margin: 20px;
+       padding: 0px 10px;
        font-family: Arial, Helvetica, sans-serif;
+
+    
 
 
     }
