@@ -1,0 +1,202 @@
+
+/* ============== INICIO =================== */
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+         background-color: #0B0B0D  ;
+    }
+
+    /* ============== MAIN =================== */
+    main{
+    align-self: center;
+    background-color: #303030;
+    margin: 150px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    box-shadow: 8px 8px 8px 8px rgba(238, 238, 238, 0.5), inset 0 0 5px blue;
+    }
+
+    label{
+
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+.box {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #2c2c2c;
+    border-radius: 10px;
+    max-width: 100%;
+    gap: 20px;
+}
+
+.valor {
+    width: 150px;
+    text-align: center;
+}
+
+.nome {
+    width: 200px; /* tamanho ocupado */
+}
+
+.vista{
+    width: 50px;
+}
+
+#resultado{
+
+    background: #000000;
+    border: #ccc;
+    
+}
+
+
+
+
+.botao1 
+{
+  --hover-shadows: 16px 16px 33px #121212, -16px -16px 33px #303030;
+  --accent: rgb(216, 203, 216);
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 1.1em;
+  background-color: #212121;
+  cursor: pointer;
+  color: white;
+  padding: 1em 2em;
+  margin: 10px;
+
+  transition: box-shadow ease-in-out 0.3s,
+  background-color ease-in-out 0.1s,
+  letter-spacing ease-in-out 0.1s,
+  transform ease-in-out 0.1s;
+
+  box-shadow: 13px 13px 10px #1c1c1c,
+  -13px -13px 10px #262626;
+}   
+
+.botao1:hover 
+{
+  box-shadow: var(--hover-shadows);
+}
+
+.botao1:active
+{
+  box-shadow: var(--hover-shadows), var(--accent) 0px 0px 30px 5px;
+  background-color: var(--accent);
+  transform: scale(0.95);
+}
+
+input
+{
+padding:10px;
+border-radius:10px;
+border:none;
+font-size:18px;
+margin:10px;
+text-align:center;
+}
+
+h1
+{
+    color: rgb(255, 255, 255);
+    margin: 40px;
+    margin-bottom: 10px;
+    padding: 0px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+select {
+    width: 200px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+
+/* ============== HEADER =================== */
+    .nav-esq{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+    }
+
+
+    header{
+        
+        top: 0;
+        width: 100%;
+        height: 100px;
+        background-color: #36288a;
+          
+    }   
+    
+    header h1{
+        color: rgb(255, 255, 255);
+        margin: 20px;
+       padding: 0px 10px;
+       font-family: Arial, Helvetica, sans-serif;
+
+    
+
+
+    }
+    li{
+        margin-left: 50px;
+        list-style: none;   
+    }
+
+    .Menu{
+        display: flex;
+       
+        margin: 20px;
+        
+    }
+
+    .Menu a{
+        text-decoration: none;   /* remove o sublinhado */
+        color: white; 
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .Menu a:hover{
+        color: rgb(43, 27, 27);   
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+/* ============== FOOTER =================== */      
+        
+    footer{
+        
+        text-align: center; 
+        padding: 30px 20px;
+        background-color: #36288a;
+    }
+
+    p{
+        color: rgb(255, 255, 255);
+        margin: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    
+
+    

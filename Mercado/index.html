@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YgorPW</title>
+<link rel="stylesheet" href="./mercado.css">
+
+<script>
+
+
+
+function Comprar(){
+
+    let total = 0;
+
+    // Produto 1
+    let c0 = document.getElementById("p0");
+    let p0 = document.getElementById("n1");
+    if (c0.checked && Number(p0.value) > 0) 
+    {
+        total += Number(p0.value) * 40;
+    }
+
+    // Produto 2
+    let c1 = document.getElementById("p1");
+    let p1 = document.getElementById("n2");
+    if (c1.checked && Number(p1.value) > 0) 
+    {
+        total += Number(p1.value) * 7;
+    }
+
+    // Produto 3
+    let c2 = document.getElementById("p2");
+    let p2 = document.getElementById("n3");
+    if (c2.checked && Number(p2.value) > 0) 
+    {
+        total += Number(p2.value) * 20;
+    }
+
+    // Produto 4
+    let c3 = document.getElementById("p3");
+    let p3 = document.getElementById("n4");
+    if (c3.checked && Number(p3.value) > 0) 
+    {
+        total += Number(p3.value) * 15;
+    }
+
+    // Produto 5
+    let c4 = document.getElementById("p4");
+    let p4 = document.getElementById("n5");
+    if (c4.checked && Number(p4.value) > 0) 
+    {
+        total += Number(p4.value) * 15;
+    }
+
+    // Produto 6
+    let c5 = document.getElementById("p5");
+    let p5 = document.getElementById("n6");
+    if (c5.checked && Number(p5.value) > 0) 
+    {
+        total += Number(p5.value) * 150;
+    }
+
+    // Produto 7
+    let c6 = document.getElementById("p6");
+    let p6 = document.getElementById("n7");
+    if (c6.checked  && Number(p6.value) > 0) /* faz a checagem se o a vista esta selecionado */
+    { 
+        total += Number(p6.value) * 7;
+    }
+
+    // Pagamento à vista 
+    let av = document.getElementById("av");
+    if (av.checked /* faz a checagem se o a vista esta selecionado */ ) {
+        total *= 0.915;
+    }
+
+    // Pagamento à prazo 
+    let ap = document.getElementById("ap");
+    let prazo = document.getElementById("prazo").value;
+
+     if (ap.checked) /* faz a checagem se o prazo esta selecionado */ {
+
+        let parcelas = parseInt(prazo) ;// transforma o texto em valoor numerico (caso o primeiro valor seja um numero como 5x logo 5x = 5)
+
+        if (total / parcelas < 10){
+            document.getElementById("resultado").innerText = "Não é possível parcelar ";
+            return;
+        }
+
+        total *= 1.06;
+
+        if (prazo === "5x"){
+            total += (6.9 * 5)
+
+
+        }
+
+        if (prazo === "4x"){
+            total += (6.9 * 4)
+            
+        }
+
+        if (prazo === "3x"){
+            total += (6.9 * 3)
+            
+        }
+
+        if (prazo === "2x"){
+
+            total += (6.9 * 2)
+        }
+    }
+    if(ap.checked || av.checked ) {
+    document.getElementById("resultado").innerText =
+    "Total da compra: R$ " + total.toFixed(2);
+    }
+}
+
+
+</script>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-esq">
+            <h1><b>Loja</b></h1>
+        </nav>
+    </header>
+
+    <main >
+
+        <h1 >Papelaria</h1>
+
+        <br>
+        <br>
+        <br>
+            <div class="box">
+                    <div class="nome">
+                        <input type="checkbox" id="p0" name="interesses" value="html">
+                        <label for="opcao1">Caderno 10 materias</label>
+                    </div>
+                    <div class="valor"> <p> R$ 40,00 </p> </div>
+                    <input type="number" id="n1" placeholder="Digite a quantidade:" class="qnt">
+                    <div> </div>
+            </div>
+
+            
+
+            <div class="box">
+                    <div class="nome">
+                        <input type="checkbox" id="p1" name="interesses" value="html">
+                        <label for="opcao1">lapizeira</label>
+                    </div>
+                    <div class="valor"> <p> R$ 7,00 </p> </div>
+                    <input type="number" id="n2" placeholder="Digite a quantidade:" class="qnt">
+                    <div> </div>
+            </div>
+
+            
+
+            <div class="box">
+                    <div class="nome">
+                        <input type="checkbox" id="p2" name="interesses" value="html">
+                        <label for="opcao1">estojo</label>
+                    </div>
+                    <div class="valor"> <p> R$ 20,00 </p> </div>
+                    <input type="number" id="n3" placeholder="Digite a quantidade:" class="qnt">
+                    <div> </div>
+            </div>
+
+            
+
+            <div class="box">
+                    <div class="nome">
+                        <input type="checkbox" id="p3" name="interesses" value="html">
+                        <label for="opcao1">caderno 1 materia</label>
+                    </div>
+                    <div class="valor"> <p> R$ 15,00 </p> </div>
+                    <input type="number" id="n4" placeholder="Digite a quantidade:" class="qnt">
+                    <div> </div>
+            </div>
+
+            
+
+            <div class="box">
+                    <div class="nome">
+                        <input type="checkbox" id="p4" name="interesses" value="html">
+                        <label for="opcao1">Kit Canetas FB</label>
+                    </div>
+                    <div class="valor"> <p> R$15,00 </p> </div>
+                    <input type="number" id="n5" placeholder="Digite a quantidade:" class="qnt">
+                    <div> </div>
+            </div>
+
+            
+
+            <div class="box">
+                    <div class="nome">
+                        <input type="checkbox" id="p5" name="interesses" value="html">
+                        <label for="opcao1">Mochila</label>
+                    </div>
+                    <div class="valor"> <p> R$ 150,00 </p> </div>
+                    <input type="number" id="n6" placeholder="Digite a quantidade:" class="qnt">
+                    <div> </div>
+            </div>
+
+            
+
+
+            <div class="box">
+                    <div class="nome">
+                        <input type="checkbox" id="p6" name="interesses" value="html">
+                        <label for="opcao1">Kit Borrachas</label>
+                    </div>
+                    <div class="valor"> <p> R$ 7,00 </p> </div>
+                    <input type="number" id="n7" placeholder="Digite a quantidade:" class="qnt">
+                    <div> </div>
+            </div>
+
+
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="box">
+            
+                <div class="box">
+                        <div >
+                            <input type="radio" id="av" name="avista" value="html">
+                        </div>
+                        <div class="vista" id="v"><label for="opcao1" >À vista </label></div>
+            
+            
+                </div>
+                <div class="box">
+                        <div >
+                            <input type="radio" id="ap" name="avista" value="html">
+                        </div>
+                        <label for="opcao2">À prazo</label>
+                            <select id="prazo" name="parcelas">
+                                <option value="5x" id="5x">5x</option>
+                                <option value="4x" id="4x">4x</option>
+                                <option value="3x" id="3x">3x</option>
+                                <option value="2x" id="2x">2x</option>
+                            </select>
+                </div>
+                <button class="botao1" onclick="Comprar()">Comprar</button>
+            
+            <label id="resultado" value="0"></label>
+        </div>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+</main>
+
+
+
+<footer>
+    <p>© 2026 por Ygor Santana. Criado para o trabalho de programação WEB</p>
+</footer>
+
+
+
+</body>
+</html>
