@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Controle de Gastos</title>
+<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+<h1> Controle de Gastos</h1>
+
+<form id="form">
+    <input type="text" id="descricao" placeholder="Descrição">
+    <input type="number" id="valor"  step="0.01" min="0" value="0.00">
+
+    <select id="categoria">
+        <option value="">Categoria</option>
+        <option>Alimentação</option>
+        <option>Transporte</option>
+        <option>Lazer</option>
+    </select>
+
+    <button type="submit">Adicionar</button>
+</form>
+
+<div class="total">
+    <p>Total: R$ <span id="total">0.00</span></p>
+</div>
+<div class='container-filtrar'></div>
+    <select id="filtro">
+        <option value="Todos">Filtrar</option>
+        <option value="Alimentação">Alimentação</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Lazer">Lazer</option>
+    </select>
+</div>
+
+<ul id="lista"></ul>
+
+<script>
+
+
+// array fica todos gastos registrados
+let gastos = []; 
+
+
+
+
+
+
+
+// ADICIONAR GASTO
+document.getElementById("form").addEventListener("submit", (e) => {
+    
+    // pegando valores digitados
+    const descricao = document.getElementById("descricao").value.trim();
+    const valor = parseFloat(document.getElementById("valor").value);
+    const categoria = document.getElementById("categoria").value;
+
+    // validação dos dados
+    if (!descricao || isNaN(valor) || valor <= 0 || !categoria) {
+        alert("Preencha tudo corretamente!");
+        return; // para o código se estiver errado
+    }
+
+    // criando objeto gasto
+    const gasto = {
+        descricao, // texto
+        valor,     // número
+        categoria, // texto
+        data: new Date().toLocaleDateString() // data atual
+    };
+
+    // adiciona no array
+    gastos.push(gasto);
+
+    salvar();       // salva no localStorage
+    renderizar();   // atualiza a tela
+    limparCampos(); // limpa os inputs
+});
+
+
+// ===============================
+// FUNÇÃO PRINCIPAL DE EXIBIÇÃO
+// ===============================
+// toda vez que algo muda (add/remover/filtro), essa função atualiza tudo
+function renderizar() {
+
+    const lista = document.getElementById("lista");
+    lista.innerHTML = "";  // limpa a lista antes de recriar
+
+    const filtro = document.getElementById("filtro").value;
+
+    // filtro usando switch (como pedido no trabalho)
+    const filtrados = gastos.filter(g => {
+        switch (filtro) {
+            case "Alimentação":
+            case "Transporte":
+            case "Lazer":
+                return g.categoria === filtro; // mostra só a categoria escolhida
+
+            default:
+                return true; // mostra todos
+        }
+    });
+
+    // percorre os gastos e cria cada item na tela
+    filtrados.forEach((g, i) => {
+
+        const li = document.createElement("li"); // cria um <li>
+
+        // conteúdo do item
+        li.innerHTML = `
+            <div>
+                <strong>${g.descricao}</strong><br>
+                R$ ${g.valor.toFixed(2)} | Categoria: ${g.categoria}<br>
+                <small>Data: ${g.data}</small>
+            </div>
+
+            <button 
+                onclick="remover(${i})"
+                style="
+                    background-image: url('https://img.freepik.com/vetores-premium/ilustracao-vetorial-do-icone-de-reciclagem-de-estoque_564384-1715.jpg?semt=ais_hybrid&w=740&q=80');
+                    background-size: cover;
+                    width: 50px;
+                    height: 50px;
+                    cursor: pointer;">
+            </button>
+        `;
+
+        lista.appendChild(li); // coloca o <li> dentro da lista
+    });
+
+    calcularTotal(); // atualiza o total
+}
+
+
+// ===============================
+// REMOVER GASTO
+// ===============================
+function remover(index) {
+    gastos.splice(index, 1); // remove pelo índice
+    salvar();     // atualiza no localStorage
+    renderizar(); // atualiza a tela
+}
+
+
+// ===============================
+// CALCULAR TOTAL
+// ===============================
+function calcularTotal() {
+
+    let total = 0;
+
+    // percorre todos os gastos somando
+    for (let i = 0; i < gastos.length; i++) {
+        total += gastos[i].valor;
+    }
+
+    // mostra o total formatado
+    document.getElementById("total").textContent = total.toFixed(2);
+}
+
+
+// ===============================
+// SALVAR NO LOCALSTORAGE
+// ===============================
+function salvar() {
+    localStorage.setItem("gastos", JSON.stringify(gastos));
+}
+
+
+// ===============================
+// CARREGAR DO LOCALSTORAGE
+// ===============================
+function carregar() {
+    const dados = localStorage.getItem("gastos");
+
+    if (dados) {
+        gastos = JSON.parse(dados); // transforma de string para array
+    }
+}
+
+// QUANDO A PÁGINA CARREGA
+document.addEventListener("DOMContentLoaded", () => {
+    carregar();   // pega dados salvos no navegador (localStorage)
+    renderizar(); // mostra os dados na tela
+});
+
+// ===============================
+// LIMPAR CAMPOS
+// ===============================
+function limparCampos() {
+    document.getElementById("descricao").value = "";
+    document.getElementById("valor").value = "";
+    document.getElementById("categoria").value = "";
+}
+
+
+// ===============================
+// FILTRO
+// ===============================
+document.getElementById("filtro").addEventListener("change", renderizar);
+// quando muda o filtro, atualiza a lista
+
+</script>
+</body>
+</html>
