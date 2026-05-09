@@ -53,7 +53,8 @@ let gastos = [];
 
 // ADICIONAR GASTO
 document.getElementById("form").addEventListener("submit", (e) => {
-    
+    e.preventDefault(); // impede a página de recarregar
+
     // pegando valores digitados
     const descricao = document.getElementById("descricao").value.trim();
     const valor = parseFloat(document.getElementById("valor").value);
@@ -82,9 +83,6 @@ document.getElementById("form").addEventListener("submit", (e) => {
 });
 
 
-// ===============================
-// FUNÇÃO PRINCIPAL DE EXIBIÇÃO
-// ===============================
 // toda vez que algo muda (add/remover/filtro), essa função atualiza tudo
 function renderizar() {
 
@@ -137,9 +135,7 @@ function renderizar() {
 }
 
 
-// ===============================
 // REMOVER GASTO
-// ===============================
 function remover(index) {
     gastos.splice(index, 1); // remove pelo índice
     salvar();     // atualiza no localStorage
@@ -147,9 +143,7 @@ function remover(index) {
 }
 
 
-// ===============================
 // CALCULAR TOTAL
-// ===============================
 function calcularTotal() {
 
     let total = 0;
@@ -164,17 +158,13 @@ function calcularTotal() {
 }
 
 
-// ===============================
 // SALVAR NO LOCALSTORAGE
-// ===============================
 function salvar() {
     localStorage.setItem("gastos", JSON.stringify(gastos));
 }
 
 
-// ===============================
 // CARREGAR DO LOCALSTORAGE
-// ===============================
 function carregar() {
     const dados = localStorage.getItem("gastos");
 
@@ -189,9 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizar(); // mostra os dados na tela
 });
 
-// ===============================
 // LIMPAR CAMPOS
-// ===============================
 function limparCampos() {
     document.getElementById("descricao").value = "";
     document.getElementById("valor").value = "";
@@ -199,9 +187,7 @@ function limparCampos() {
 }
 
 
-// ===============================
 // FILTRO
-// ===============================
 document.getElementById("filtro").addEventListener("change", renderizar);
 // quando muda o filtro, atualiza a lista
 
