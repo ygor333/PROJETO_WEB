@@ -1,0 +1,67 @@
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(rgb(226,226,226), rgb(47,21,99));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 90%;
+    max-width: 600px;
+}
+
+form{
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input{
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+input:focus{
+    border-color: #66a6ff;
+    box-shadow: 0 0 5px #66a6ff;
+    outline: none;
+}
+
+button{
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: rgb(47,21,99);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover{
+    opacity: 0.9;
+}
+
+h1,h2{
+    text-align: center;
+    color: white;
+}
+
+.aluno{
+    background: white;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.aluno h3{
+    margin-bottom: 10px;
+}
+

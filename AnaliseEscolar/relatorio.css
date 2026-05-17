@@ -1,0 +1,44 @@
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(rgb(226,226,226), rgb(47,21,99));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 90%;
+    max-width: 700px;
+    margin: 50px;
+}
+
+.relatorio{
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.aluno{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.aprovado{
+    color: green;
+    font-weight: bold;
+}
+
+.reprovado{
+    color: red;
+    font-weight: bold;
+}

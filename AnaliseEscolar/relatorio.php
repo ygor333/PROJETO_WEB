@@ -3,67 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cadastro de Turma</title>
+<title>Relatório Escolar</title>
+<link rel="stylesheet" href="./relatorio.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="relatorio">
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Escolar</title>
 
 <style>
-body {
+
+body{
     font-family: Arial, sans-serif;
-    background: linear-gradient( rgb(226, 226, 226), rgb(47, 21, 99)    );
+    background: linear-gradient(rgb(226,226,226), rgb(47,21,99));
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container {
+.container{
     width: 90%;
-    max-width: 500px;
-    margin: 100px;
+    max-width: 800px;
+    margin: 50px;
 }
 
-form {
+.relatorio{
     background: white;
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
-input {
-    padding: 5px 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-input:focus {
-    border-color: #66a6ff;
-    box-shadow: 0 0 5px #66a6ff;
-}
-    
-h1{
-
+h1,h2{
     text-align: center;
-
 }
 
- h3{
-    margin: 5px 0;
-}
-
-h2 {
-    margin: 20px 0;
-    text-align: center;
-    margin-top: 50px
-}
-
-.aluno {
-    padding: 10px;
-    border: 1px solid #eee;
+.aluno{
+    border: 1px solid #ddd;
     border-radius: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
 }
+
+.resumo{
+    margin-top: 30px;
+    border-top: 2px solid #ccc;
+    padding-top: 20px;
+}
+
+.aprovado{
+    color: green;
+    font-weight: bold;
+}
+
+.recuperacao{
+    color: orange;
+    font-weight: bold;
+}
+
+.reprovado{
+    color: red;
+    font-weight: bold;
+}
+
 </style>
 </head>
 
@@ -71,33 +84,176 @@ h2 {
 
 <div class="container">
 
+<div class="relatorio">
+
 <?php
 
-$turma = $_POST['turma'];
-$qtd = $_POST['qtd'];
+if(
+    isset($_POST['turma']) &&
+    isset($_POST['qtd'])
+){
 
-echo "<h2>Resultados da Turma: $turma</h2>";
+    $turma = $_POST['turma'];
+    $qtd = $_POST['qtd'];
 
-for ($i = 1; $i <= $qtd; $i++) {
+    echo "<h1>Resultados da Turma: $turma</h1>";
 
-    $nome = $_POST["nome$i"];
-    $p1 = $_POST["p1_$i"];
-    $p2 = $_POST["p2_$i"];
-    $trab = $_POST["trab_$i"];
+    // VARIÁVEIS GERAIS
+    $somaMedias = 0;
+    $maiorMedia = 0;
+    $menorMedia = 10;
+    $aprovados = 0;
+    $recuperacao = 0;
+    $reprovados = 0;
+    $somaNotas = 0;
 
-    $media = ($p1 + $p2 + $trab) / 3;
+    for($i = 1; $i <= $qtd; $i++){
 
-    echo "<h3>$nome</h3>";
-    echo "Média: " . number_format($media, 2) . "<br><br>";
+        $nome = $_POST["nome$i"];
+
+        $p1 = floatval($_POST["p1_$i"]);
+        $p2 = floatval($_POST["p2_$i"]);
+        $trab = floatval($_POST["trab_$i"]);
+
+        // SOMA TOTAL DAS NOTAS
+        $somaNotas += ($p1 + $p2 + $trab);
+
+        // MÉDIA DO ALUNO
+        $media = ($p1 + $p2 + $trab) / 3;
+
+        // SOMA DAS MÉDIAS
+        $somaMedias += $media;
+
+        // MAIOR MÉDIA
+        if($media > $maiorMedia){
+            $maiorMedia = $media;
+        }
+
+        // MENOR MÉDIA
+        if($media < $menorMedia){
+            $menorMedia = $media;
+        }
+
+        // SITUAÇÃO
+        if($media >= 7){
+
+            $situacao = "<span class='aprovado'>Aprovado</span>";
+            $aprovados++;
+
+        }elseif($media >= 5){
+
+            $situacao = "<span class='recuperacao'>Recuperação</span>";
+            $recuperacao++;
+
+        }else{
+
+            $situacao = "<span class='reprovado'>Reprovado</span>";
+            $reprovados++;
+        }
+
+        // EXIBIÇÃO DO ALUNO
+        echo "
+        <div class='aluno'>
+
+            <h3>$nome</h3>
+
+            <p><strong>P1:</strong> $p1</p>
+
+            <p><strong>P2:</strong> $p2</p>
+
+            <p><strong>Trabalho:</strong> $trab</p>
+
+            <p>
+                <strong>Média:</strong>
+                ".number_format($media,2)."
+            </p>
+
+            <p>
+                <strong>Situação:</strong>
+                $situacao
+            </p>
+
+        </div>
+        ";
+    }
+
+    // MÉDIA GERAL
+    $mediaGeral = $somaMedias / $qtd;
+
+    // PERCENTUAL DE APROVAÇÃO
+    $percentualAprovacao = ($aprovados / $qtd) * 100;
+
+    // RESUMO FINAL
+    echo "
+
+    <div class='resumo'>
+
+        <h2>Resumo da Turma</h2>
+
+        <p>
+            <strong>1. Média geral da turma:</strong>
+            ".number_format($mediaGeral,2)."
+        </p>
+
+        <p>
+            <strong>2. Maior média encontrada:</strong>
+            ".number_format($maiorMedia,2)."
+        </p>
+
+        <p>
+            <strong>3. Menor média encontrada:</strong>
+            ".number_format($menorMedia,2)."
+        </p>
+
+        <p>
+            <strong>4. Quantidade de aprovados:</strong>
+            $aprovados
+        </p>
+
+        <p>
+            <strong>5. Quantidade de recuperações:</strong>
+            $recuperacao
+        </p>
+
+        <p>
+            <strong>6. Quantidade de reprovados:</strong>
+            $reprovados
+        </p>
+
+        <p>
+            <strong>7. Percentual de aprovação da turma:</strong>
+            ".number_format($percentualAprovacao,2)."%
+        </p>
+
+        <p>
+            <strong>8. Soma total de todas as notas lançadas:</strong>
+            ".number_format($somaNotas,2)."
+        </p>
+
+    </div>
+
+    ";
+
+}else{
+
+    echo "<h1>Nenhum dado recebido.</h1>";
+
 }
+
 ?>
-
-
-
-
 
 </div>
 
+</div>
+
+</body>
+</html>
+
+?>
+
+</div>
+
+</div>
 
 </body>
 </html>
