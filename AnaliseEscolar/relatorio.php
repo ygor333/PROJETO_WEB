@@ -14,70 +14,6 @@
 
 <div class="relatorio">
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relatório Escolar</title>
-
-<style>
-
-body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(rgb(226,226,226), rgb(47,21,99));
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container{
-    width: 90%;
-    max-width: 800px;
-    margin: 50px;
-}
-
-.relatorio{
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-h1,h2{
-    text-align: center;
-}
-
-.aluno{
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-}
-
-.resumo{
-    margin-top: 30px;
-    border-top: 2px solid #ccc;
-    padding-top: 20px;
-}
-
-.aprovado{
-    color: green;
-    font-weight: bold;
-}
-
-.recuperacao{
-    color: orange;
-    font-weight: bold;
-}
-
-.reprovado{
-    color: red;
-    font-weight: bold;
-}
-
-</style>
 </head>
 
 <body>
@@ -239,15 +175,6 @@ if(
     echo "<h1>Nenhum dado recebido.</h1>";
 
 }
-
-?>
-
-</div>
-
-</div>
-
-</body>
-</html>
 
 ?>
 

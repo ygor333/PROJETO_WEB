@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro Escolar</title>
+<link rel="stylesheet" href="./index1.css">
+
+</head>
+
+<body>
+
+<!-- Container principal -->
+<div class="container">
+
+<!-- Título da página -->
+<h1>Análise Escolar</h1>
+
+<!-- ========================= FORMULÁRIO INICIAL ========================= -->
+
+<!-- Formulário para cadastrar a turma -->
+<form id="turmaForm">
+
+    <!-- Campo nome da turma -->
+    <label>Nome da turma:</label>
+    <input type="text" id="turma">
+
+    <!-- Campo quantidade de alunos -->
+    <label>Quantidade de alunos:</label>
+    <input type="number" id="qtd" min="1">
+
+    <!-- Botão para gerar formulário -->
+    <button type="submit">
+        Gerar Formulário
+    </button>
+
+</form>
+
+<!-- Área onde os formulários dos alunos serão criados -->
+<div id="areaFormulario"></div>
+
+</div>
+
+<script>
+
+// ========================= PEGANDO ELEMENTOS HTML =========================
+
+// Pega o formulário inicial
+const turmaForm = document.getElementById("turmaForm");
+
+// Pega a div onde será criado o formulário dos alunos
+const areaFormulario = document.getElementById("areaFormulario");
+
+// ========================= EVENTO DE ENVIO DO FORMULÁRIO =========================
+
+// Quando o formulário for enviado
+turmaForm.addEventListener("submit", function(e){
+
+    // Impede o recarregamento da página
+    e.preventDefault();
+
+    // ========================= REGISTRO DA TURMA =========================
+
+    // Pega o nome da turma e remove espaços extras
+    const turma = document.getElementById("turma").value.trim();
+
+    // Pega a quantidade de alunos e transforma em número inteiro
+    const qtd = parseInt(document.getElementById("qtd").value);
+
+    // ========================= VALIDAÇÃO DA TURMA =========================
+
+    // Verifica se o nome da turma está vazio
+    if(turma === ""){
+
+        // Mostra mensagem de erro
+        alert("Digite o nome da turma.");
+
+        // Para o código
+        return;
+    }
+
+    // Verifica se a quantidade é inválida
+    if(isNaN(qtd) || qtd <= 0){
+
+        // Mostra mensagem de erro
+        alert("Quantidade inválida.");
+
+        // Para o código
+        return;
+    }
+
+    // ========================= CRIANDO HTML DO FORMULÁRIO =========================
+
+    // Variável que armazenará o HTML
+    let html = `
+    
+    <!-- Formulário que enviará os dados para o PHP -->
+    <form id="alunosForm" action="relatorio.php" method="POST">
+
+        <!-- Campo oculto com nome da turma -->
+        <input type="hidden" name="turma" value="${turma}">
+
+        <!-- Campo oculto com quantidade de alunos -->
+        <input type="hidden" name="qtd" value="${qtd}">
+
+        <!-- Título -->
+        <h2 style="color: black;">Turma: ${turma}</h2>
+    
+    `;
+
+    // ========================= GERANDO FORMULÁRIOS DOS ALUNOS =========================
+
+    // Repete conforme a quantidade de alunos
+    for(let i = 1; i <= qtd; i++){
+
+        // Adiciona HTML na variável
+        html += `
+
+        <!-- Card do aluno -->
+        <div class="aluno">
+
+            <!-- Número do aluno -->
+            <h3>Aluno ${i}</h3>
+
+            <!-- Nome -->
+            <label>Nome:</label>
+
+            <input type="text"  name="nome${i}" required>
+
+            <!-- Nota P1 -->
+            <label>Nota P1:</label>
+
+            <input type="number" step="0.1" min="0" max="10" name="p1_${i}" required>
+
+            <!-- Nota P2 -->
+            <label>Nota P2:</label>
+
+            <input type="number" step="0.1" min="0" max="10" name="p2_${i}" required >
+
+            <!-- Nota Trabalho -->
+            <label>Nota Trabalho:</label>
+
+            <input type="number" step="0.1" min="0" max="10" name="trab_${i}" required>
+
+        </div>
+`;
+    }
+
+    // ========================= FINAL DO FORMULÁRIO =========================
+
+    // Fecha o formulário
+    html += `
+    
+        <!-- Botão de envio -->
+        <button type="submit">
+            Enviar Notas
+        </button>
+
+    </form>
+    `;
+
+    // Coloca o HTML criado dentro da div
+    areaFormulario.innerHTML = html;
+
+    // ========================= PEGANDO FORMULÁRIO DOS ALUNOS =========================
+
+    const alunosForm = document.getElementById("alunosForm");
+
+    // ========================= VALIDAÇÃO DAS INFORMAÇÕES =========================
+
+    // Quando o formulário dos alunos for enviado
+    alunosForm.addEventListener("submit", function(e){
+
+        // ========================= VALIDANDO NOTAS =========================
+
+        // Pega todos os inputs number
+        const inputsNotas = alunosForm.querySelectorAll(
+            "input[type='number']"
+        );
+
+        // Percorre cada nota
+        for(let nota of inputsNotas){
+
+            // Converte valor para número decimal
+            const valor = parseFloat(nota.value);
+
+            // Verifica se é inválido
+            if(isNaN(valor) || valor < 0 || valor > 10){
+
+                // Mostra mensagem
+                alert("As notas devem estar entre 0 e 10.");
+
+                // Cursor volta para o campo errado
+                nota.focus();
+
+                // Impede envio
+                e.preventDefault();
+
+                // Para o código
+                return;
+            }
+        }
+
+        // ========================= VALIDANDO NOMES =========================
+
+        // Pega todos os inputs de texto
+        const nomes = alunosForm.querySelectorAll(
+            "input[type='text']"
+        );
+
+        // Percorre cada nome
+        for(let nome of nomes){
+
+            // Verifica se está vazio
+            if(nome.value.trim() === ""){
+
+                // Mostra mensagem
+                alert("Preencha todos os nomes.");
+
+                // Cursor volta para o campo vazio
+                nome.focus();
+
+                // Impede envio
+                e.preventDefault();
+
+                // Para o código
+                return;
+            }
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
