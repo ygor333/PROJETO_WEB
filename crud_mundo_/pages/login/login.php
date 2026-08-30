@@ -1,6 +1,6 @@
 <?php
 // login.php - Tela de autenticação
-
+$pageTitle = "Início";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
