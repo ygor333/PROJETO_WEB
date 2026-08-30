@@ -1,17 +1,17 @@
 
 function mostrarErro(campo, mensagem) {
   limparErro(campo);
-  campo.classList.add("campo-invalido");
-  const span = document.createElement("span");
-  span.className = "erro-msg";
-  span.textContent = mensagem;
-  campo.insertAdjacentElement("afterend", span);
+  campo.classList.add("is-invalid");
+  const div = document.createElement("div");
+  div.className = "invalid-feedback";
+  div.textContent = mensagem;
+  campo.insertAdjacentElement("afterend", div);
 }
 
 function limparErro(campo) {
-  campo.classList.remove("campo-invalido");
+  campo.classList.remove("is-invalid");
   const proximo = campo.nextElementSibling;
-  if (proximo && proximo.classList.contains("erro-msg")) {
+  if (proximo && proximo.classList.contains("invalid-feedback")) {
     proximo.remove();
   }
 }
@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!valido) {
         e.preventDefault();
         // Rola até o primeiro erro
-        const primeiro = form.querySelector(".campo-invalido");
+        const primeiro = form.querySelector(".is-invalid");
         if (primeiro) primeiro.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     });
