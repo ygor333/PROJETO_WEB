@@ -17,6 +17,7 @@
     <a class="navbar-brand fw-bold" href="index.php">CRUD Mundo</a>
     <div>
       <a class="btn btn-outline-light btn-sm me-2" href="index.php">Menu</a>
+      <a class="btn btn-outline-light btn-sm me-2" href="../login/gerenciar_usuarios.php">Usuários</a>
       <a class="btn btn-outline-danger btn-sm" href="../login/logout.php">Sair</a>
     </div>
   </div>
