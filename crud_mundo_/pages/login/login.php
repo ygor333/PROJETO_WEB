@@ -1,6 +1,7 @@
 <?php
 // login.php - Tela de autenticação
 $pageTitle = "Início";
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -138,6 +139,10 @@ function registrarLog(mysqli $conn, int $idUsuario, string $acao, string $descri
 <button name="entrar" class="btn btn-primary w-100">Entrar</button>
 
 </form>
+
+<p class="text-center mt-3 mb-0">
+<a href="esqueci_senha.php">Esqueci minha senha</a>
+</p>
 
 </div>
 </div>

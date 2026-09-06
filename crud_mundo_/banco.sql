@@ -59,6 +59,8 @@ CREATE TABLE usuarios (
     sts_cadastro ENUM('A','B') NOT NULL DEFAULT 'A', -- A = acesso liberado, B = acesso bloqueado
     tentativas_login TINYINT UNSIGNED NOT NULL DEFAULT 0,
     primeiro_acesso TINYINT(1) NOT NULL DEFAULT 1, -- 1 = precisa trocar a senha no próximo login
+    token_recuperacao_hash CHAR(64) NULL, -- hash sha256 do token enviado ao usuário
+    token_expira DATETIME NULL, -- validade do token de recuperação de senha
     dt_cadastro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=INNODB;
 
