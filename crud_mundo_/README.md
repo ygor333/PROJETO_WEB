@@ -15,6 +15,7 @@ O CRUD Mundo é uma aplicação web para cadastro e gerenciamento de dados geogr
 - Cadastro, listagem, busca e exclusão de países (vinculados a continente e governante)
 - Cadastro, listagem, busca e exclusão de cidades (vinculadas a país e governante)
 - Cadastro, listagem e exclusão de governantes
+- Mapa interativo (Google Maps JavaScript API) com a localização da sede da Etec São José dos Campos
 - Validação de formulários no navegador (campos obrigatórios, nomes só com letras, números positivos, confirmação antes de excluir)
 
 ## Tecnologias utilizadas
@@ -22,6 +23,7 @@ O CRUD Mundo é uma aplicação web para cadastro e gerenciamento de dados geogr
 - PHP (mysqli)
 - MySQL
 - Bootstrap 5.3.3
+- Google Maps JavaScript API
 - JavaScript
 - Git
 - GitHub
@@ -39,6 +41,8 @@ crud_mundo_/
 ├── banco.sql                   
 ├── conexao.php                
 ├── login.php                   
+├── config/
+│   └── google_maps.php         # Chave da API do Google Maps
 ├── js/
 │   └── script.js              
 └── pages/
@@ -56,6 +60,7 @@ crud_mundo_/
         ├── paises.php
         ├── cidades.php
         ├── governantes.php
+        ├── mapa.php            # Mapa da Etec São José dos Campos
         └── partials/
             ├── header.php
             └── footer.php
@@ -70,7 +75,8 @@ crud_mundo_/
    mysql -u root -p < banco.sql
    ```
 4. Configure as credenciais de acesso ao banco em `conexao.php`.
-5. Inicie o servidor e acesse `login.php` pelo navegador.
+5. Informe a chave da Google Maps JavaScript API em `config/google_maps.php` (variável `$googleMapsKey`).
+6. Inicie o servidor e acesse `login.php` pelo navegador.
 
 **Acesso inicial (usuário administrador padrão):**
 - E-mail: `admin@crudmundo.com`
