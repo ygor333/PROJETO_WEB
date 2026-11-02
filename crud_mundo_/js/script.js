@@ -163,6 +163,15 @@ function validarPaises(form) {
   const clima     = form.querySelector('[name="clima"]');
   const regime    = form.querySelector('[name="regime"]');
   const moeda     = form.querySelector('[name="moeda"]');
+  const governante = form.querySelector('[name="governante"]');
+
+  // Governante (a lista fica vazia se ainda não há governantes cadastrados)
+  if (governante && !governante.value) {
+    mostrarErro(governante, "Cadastre um governante na tela Governantes antes de salvar.");
+    valido = false;
+  } else if (governante) {
+    limparErro(governante);
+  }
 
   // Nome
   if (!nome.value.trim()) {
@@ -236,6 +245,15 @@ function validarCidades(form) {
   const area      = form.querySelector('[name="area"]');
   const clima     = form.querySelector('[name="clima"]');
   const data      = form.querySelector('[name="data"]');
+  const governante = form.querySelector('[name="governante"]');
+
+  // Governante (a lista fica vazia se ainda não há governantes cadastrados)
+  if (governante && !governante.value) {
+    mostrarErro(governante, "Cadastre um governante na tela Governantes antes de salvar.");
+    valido = false;
+  } else if (governante) {
+    limparErro(governante);
+  }
 
   // Nome
   if (!nome.value.trim()) {

@@ -81,3 +81,26 @@ CREATE TABLE logs (
 INSERT INTO usuarios (nome, email, senha, sts_cadastro, tentativas_login, primeiro_acesso) VALUES
 ('Administrador', 'admin@crudmundo.com', '$2y$10$zI/qJOYSOW7D5Jspt6pVQeGBhsWqkNkPaPGfh84HNvesuCl4PkJXK', 'A', 0, 1);
 
+-- ------------------------------------------------------------
+-- Dados de exemplo: continentes e países (valores aproximados)
+-- governante_id fica NULL (a coluna permite); vincule depois pelo sistema.
+-- ------------------------------------------------------------
+INSERT INTO continentes (nome) VALUES
+('América do Sul'),   -- id 1
+('América do Norte'), -- id 2
+('Europa'),           -- id 3
+('Ásia'),             -- id 4
+('África'),           -- id 5
+('Oceania');          -- id 6
+
+INSERT INTO paises (nome, continente_id, governante_id, populacao, area, idioma, clima, regime_politico, moeda) VALUES
+('Brasil',        1, NULL,    203000000, 8515767, 'Português',                       'Tropical',            'República Federativa Presidencialista', 'Real'),
+('Argentina',     1, NULL,     46000000, 2780400, 'Espanhol',                        'Temperado',           'República Federativa Presidencialista', 'Peso argentino'),
+('Canadá',        2, NULL,     40000000, 9984670, 'Inglês e francês',                'Frio e temperado',    'Monarquia Constitucional Federal',      'Dólar canadense'),
+('França',        3, NULL,     68000000,  643801, 'Francês',                         'Temperado oceânico',  'República Semipresidencialista',        'Euro'),
+('Alemanha',      3, NULL,     84000000,  357022, 'Alemão',                          'Temperado',           'República Federativa Parlamentarista',  'Euro'),
+('Japão',         4, NULL,    124000000,  377975, 'Japonês',                         'Temperado',           'Monarquia Constitucional',              'Iene'),
+('Índia',         4, NULL,   1430000000, 3287263, 'Hindi e inglês',                  'Tropical monçônico',  'República Federativa Parlamentarista',  'Rupia indiana'),
+('Egito',         5, NULL,    112000000, 1002450, 'Árabe',                           'Desértico',           'República Semipresidencialista',        'Libra egípcia'),
+('África do Sul', 5, NULL,     60000000, 1221037, 'Vários (inglês, zulu, africâner)','Subtropical',         'República Parlamentarista',             'Rand'),
+('Austrália',     6, NULL,     26000000, 7692024, 'Inglês',                          'Árido e tropical',    'Monarquia Constitucional Federal',      'Dólar australiano');

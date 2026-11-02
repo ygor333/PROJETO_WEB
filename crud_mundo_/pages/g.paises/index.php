@@ -44,6 +44,14 @@ Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?>
 </div>
 
 <div class="col-6 col-md-3">
+<a href="mapa_paises.php" class="card text-decoration-none shadow h-100">
+<div class="card-body text-center">
+<h5 class="card-title text-dark mb-0">Mapa-Múndi</h5>
+</div>
+</a>
+</div>
+
+<div class="col-6 col-md-3">
 <a href="mapa.php" class="card text-decoration-none shadow h-100">
 <div class="card-body text-center">
 <h5 class="card-title text-dark mb-0">Mapa</h5>

@@ -16,6 +16,7 @@ O CRUD Mundo é uma aplicação web para cadastro e gerenciamento de dados geogr
 - Cadastro, listagem, busca e exclusão de cidades (vinculadas a país e governante)
 - Cadastro, listagem e exclusão de governantes
 - Mapa interativo (Google Maps JavaScript API) com a localização da sede da Etec São José dos Campos
+- Mapa-Múndi (REST Countries + Google Maps): exibe os países cadastrados no banco com coordenadas, bandeira e capital obtidas da API, e permite pesquisar qualquer país
 - Validação de formulários no navegador (campos obrigatórios, nomes só com letras, números positivos, confirmação antes de excluir)
 
 ## Tecnologias utilizadas
@@ -24,13 +25,14 @@ O CRUD Mundo é uma aplicação web para cadastro e gerenciamento de dados geogr
 - MySQL
 - Bootstrap 5.3.3
 - Google Maps JavaScript API
+- API REST Countries v5 (consumida via cURL no PHP; exige chave gratuita)
 - JavaScript
 - Git
 - GitHub
 
 ## Requisitos
 
-- PHP 7.4 ou superior, com extensão `mysqli` habilitada
+- PHP 7.4 ou superior, com extensões `mysqli` e `curl` habilitadas
 - MySQL ou MariaDB
 - Servidor local, como XAMPP, WAMP ou Laragon
 
@@ -42,7 +44,8 @@ crud_mundo_/
 ├── conexao.php                
 ├── login.php                   
 ├── config/
-│   └── google_maps.php         # Chave da API do Google Maps
+│   ├── google_maps.php         # Chave da API do Google Maps
+│   └── restcountries.php       # Chave da API REST Countries v5
 ├── js/
 │   └── script.js              
 └── pages/
@@ -61,6 +64,7 @@ crud_mundo_/
         ├── cidades.php
         ├── governantes.php
         ├── mapa.php            # Mapa da Etec São José dos Campos
+        ├── mapa_paises.php     # Mapa-Múndi (REST Countries) - arquivo único: página + endpoint ?api=1
         └── partials/
             ├── header.php
             └── footer.php
@@ -76,6 +80,7 @@ crud_mundo_/
    ```
 4. Configure as credenciais de acesso ao banco em `conexao.php`.
 5. Informe a chave da Google Maps JavaScript API em `config/google_maps.php` (variável `$googleMapsKey`).
+   Informe também a chave da REST Countries v5 em `config/restcountries.php` (variável `$restCountriesKey`). Crie uma conta grátis em https://restcountries.com/sign-up (a versão antiga da API, v3.1, foi desativada).
 6. Inicie o servidor e acesse `login.php` pelo navegador.
 
 **Acesso inicial (usuário administrador padrão):**
